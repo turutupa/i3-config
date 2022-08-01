@@ -289,6 +289,7 @@ bindsym $mod+p exec /usr/local/bin/switch-audio-port
 bindsym $mod+i exec /usr/bin/brave
 bindsym $mod+o exec /var/lib/snapd/snap/bin/spotify
 bindsym $mod+n exec /usr/bin/thunar
+bindsym $mod+Shift+s exec flameshot gui -c
 bindsym Print exec scrot ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
 
 # Power Profiles menu switcher (rofi)
