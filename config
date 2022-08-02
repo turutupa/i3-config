@@ -54,8 +54,8 @@ new_window pixel 1
 # hide_edge_borders both
 
 # Set inner/outer gaps
-gaps inner 6
-gaps outer 3
+gaps inner 10
+gaps outer 5
 
 # show window title bars (not officially supported with i3gaps)
 #default_border normal
@@ -358,7 +358,8 @@ for_window [class=(?i)discord] focus
 # For modifications, it can be copied to ~/.config/picom/picom.conf or ~/.config/picom.conf
 #
 # using default config 
-exec_always --no-startup-id picom -b 
+exec_always --no-startup-id picom --experimental-backends
+# exec_always --no-startup-id picom --blur-method dual-kawase --blur-size 20 --blur-deviation 14 
 # --blur-method dual_kawase --blur-strength 7
 
 # for custom config:
@@ -426,7 +427,7 @@ exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 
 # Autostart apps as you like
 exec_always --no-startup-id spotify
-exec_always --no-startup-id ~/.config/xborder/xborders --border-radius 20 --border-mode outside
+exec_always --no-startup-id ~/.config/xborder/xborders --border-radius 30 --border-mode outside
 exec --no-startup-id sleep 2 && xfce4-terminal
 exec --no-startup-id sleep 7 && brave
 #exec --no-startup-id sleep 3 && thunar
@@ -465,7 +466,9 @@ for_window [class="Pamac-manager"] floating enable
 for_window [window_role="About"] floating enable
 
 # set border of floating window
-for_window [class="urxvt"] border pixel 1
+for_window [class="urxvt"] border pixel 0
+
+for_window [class="^.*"] border pixel 0
 
 # set size of floating window
 #for_window [window_role="(?i)GtkFileChooserDialog"] resize set 640 480 #to set size of file choose dialog
