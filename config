@@ -463,7 +463,6 @@ for_window [window_role="About"] floating enable
 
 # set border of floating window
 for_window [class="urxvt"] border pixel 0
-
 for_window [class="^.*"] border pixel 1
 
 # set size of floating window
@@ -492,8 +491,8 @@ set $yellowbrown	#e1b700
 
 # define colors for windows:
 #class		        	border		bground		text		indicator	child_border
-client.focused		    $lightblue	$darkblue	$white		$purple		$mediumgrey
-client.unfocused	    $darkblue	$darkblue	$grey		$purple		$darkgrey
+client.focused		    $lightblue	$darkblue	$white		$purple		$purple
+client.unfocused	    $darkblue	$darkblue	$grey		$purple		$purple
 # client.focused_inactive	$00ffffff $darkblue	$grey		$purple		$00ffffff
 client.urgent		    $urgentred	$urgentred	$white		$purple		$yellowbrown
 
