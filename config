@@ -206,10 +206,8 @@ bindsym $mod+0x2c exec playerctl previous
 bindsym $mod+0x2f exec playerctl play-pause
 
 # Backlight control
-bindsym $mod+F8 exec brightnessctl s +10 
-#&& notify-send "Brightness - $(brightnessctl g percentage value)%"
-bindsym $mod+F7 exec brightnessctl s 10- 
-# && notify-send "Brightness - $(brightnessctl g percentage value)%"
+bindsym $mod+F8 exec brightnessctl s +10 && notify-send "Brightness - $(brightnessctl g percentage value)%"
+bindsym $mod+F7 exec brightnessctl s 10- && notify-send "Brightness - $(brightnessctl g percentage value)%"
 # bindsym XF86MonBrightnessUp exec xbacklight +5 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
 # bindsym XF86MonBrightnessDown exec xbacklight -5 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
 
@@ -266,7 +264,7 @@ bindsym $mod+Shift+n exec ~/.config/i3/scripts/empty_workspace
 # Multimedia Keys
 
 # volume
-bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks 
 bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
 
 # gradular volume control
@@ -577,7 +575,7 @@ bar {
 bindsym $alt+space exec rofi -modi drun -show drun \
 		-config ~/.config/rofi/rofidmenu.rasi
 
-#bindsym F9 exec rofi -modi drun -show drun \
+bindsym F9 exec rofi -modi drun -show drun \
 #		-config ~/.config/rofi/rofidmenu.rasi
 
 ## rofi bindings for window menu ($mod+t /F10 optional disabled)
