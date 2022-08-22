@@ -83,6 +83,10 @@ bindsym $mod+8    workspace  $ws8
 bindsym $mod+9    workspace  $ws9
 bindsym $mod+0    workspace  $ws10
 
+# Move workspaces between monitors
+bindsym $mod+$alt+h move workspace to output left
+bindsym $mod+$alt+l move workspace to output right
+
 # switch to workspace with numpad keys
 bindcode $mod+87 workspace 1
 bindcode $mod+88 workspace 2
@@ -206,8 +210,10 @@ bindsym $mod+0x2c exec playerctl previous
 bindsym $mod+0x2f exec playerctl play-pause
 
 # Backlight control
-bindsym $mod+F8 exec brightnessctl s +10 && notify-send "Brightness - $(brightnessctl g percentage value)%"
-bindsym $mod+F7 exec brightnessctl s 10- && notify-send "Brightness - $(brightnessctl g percentage value)%"
+bindsym $mod+F8 exec brightnessctl s +10 
+# && notify-send "Brightness - $(brightnessctl -m -d amdgpu_bl0 | awk -F, '{substr($4, 0, length($4)-1)}')"
+bindsym $mod+F7 exec brightnessctl s 10- 
+# && notify-send "Brightness - $(brightnessctl -m -d amdgpu_bl0 | awk -F, '{substr($4, 0, length($4)-1)}')"
 # bindsym XF86MonBrightnessUp exec xbacklight +5 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
 # bindsym XF86MonBrightnessDown exec xbacklight -5 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
 
@@ -300,9 +306,9 @@ bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1: "
-set $ws2 "2: "
-set $ws3 "3: "
-set $ws4 "4: "
+set $ws2 "2: "
+set $ws3 "3: "
+set $ws4 "4:📚"
 set $ws5 "5: "
 set $ws6 "6:🎵"
 set $ws7 "7"
@@ -321,8 +327,10 @@ set $ws10 "10"
 
 # bind program to workspace and focus to them on startup:
 assign [class="Xfce4-terminal"] $ws1
-for_window [class="(?i)brave"]move to workspace $ws2
-assign [class="Thunar"] $ws3
+for_window [class="(?i)goland"]move to workspace $ws2
+for_window [class="(?i)code"]move to workspace $ws2
+for_window [class="(?i)brave"]move to workspace $ws3
+assign [class="Thunar"] $ws4
 for_window [class="Slack"]move to workspace $ws5
 for_window [class="Discord"]move to workspace $ws5
 for_window [class="Spotify"]move to workspace $ws6
