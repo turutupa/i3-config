@@ -199,15 +199,30 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # keybinding in fancy rofi (automated):
-bindsym F1 exec ~/.config/i3/scripts/keyhint-2
+# bindsym F1 exec ~/.config/i3/scripts/keyhint-2
 # alternative
 # keybinding list in editor:
 # bindsym $mod+F1 exec xed ~/.config/i3/keybindings
 
-# Media control
-bindsym $mod+0x2e exec playerctl next
-bindsym $mod+0x2c exec playerctl previous
-bindsym $mod+0x2f exec playerctl play-pause
+# Media control 
+# Instead of using:
+# *  "<" prev
+# *  ">" next 
+# *  "?" play/pause  
+
+# I am now using:
+# *  "<" prev
+# *  ">" play/pause 
+# *  ? next  
+# 
+# Trying to see how it feels, in a way it is more intuitive
+# 
+# previous < 
+bindsym $mod+0x2c exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+# play-pause toggle >
+bindsym $mod+0x2e exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+# next ?
+bindsym $mod+0x2f exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
 
 # Backlight control
 bindsym $mod+F8 exec brightnessctl s +10 
@@ -438,6 +453,7 @@ exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 # https://github.com/nwg-piotr/autotiling
 # `yay -S autotiling ;) (it is in AUR)
 exec_always --no-startup-id autotiling
+exec_always --no-startup-id ~/.config/polybar/launch.sh dark
 
 # Autostart apps as you like
 exec_always --no-startup-id spotify
@@ -506,13 +522,18 @@ set $darkgrey		#383c4a
 set $grey		#b0b5bd
 set $mediumgrey		#8b8b8b
 set $yellowbrown	#e1b700
+set $nord-white-1 #D8DEE9
+set $nord-white-2 #E5E9F0
+set $nord-white-3 #ECEFF4
+set $nord-dark-1 #2E3440
+set $nord-dark-4 #4C566A
 
 # define colors for windows:
-#class		        	border		bground		text		indicator	child_border
-client.focused		    $lightblue	$darkblue	$white		$purple		$purple
-client.unfocused	    $darkblue	$darkblue	$grey		$purple		$purple
-# client.focused_inactive	$00ffffff $darkblue	$grey		$purple		$00ffffff
-client.urgent		    $urgentred	$urgentred	$white		$purple		$yellowbrown
+#class		        	border		    bground		  text		    indicator	  child_border
+client.focused		    $lightblue	$darkblue	  $white		  $purple		  $purple
+client.unfocused	    $darkblue	  $darkblue	  $grey		    $purple		  $purple
+client.urgent		    $urgentred	  $urgentred	$white		  $purple		  $yellowbrown
+# client.focused_inactive	$00ffffff $darkblue	$grey		    $purple		  $00ffffff
 
 ############################################
 # bar settings (input comes from i3blocks) #
@@ -520,44 +541,44 @@ client.urgent		    $urgentred	$urgentred	$white		$purple		$yellowbrown
 
 # Start i3bar to display a workspace bar
 # (plus the system information i3status finds out, if available)
-bar {
-  font pango: JetBrains Mono Bold 12
-	position top
-	tray_output none
-  	status_command bumblebee-status -m pasink pasource battery datetime \
-		-p time.format="%H:%M" -t nord-powerline
-# 		font pango: JetBrains Mono Bold 11
-# 		# status_command i3blocks -c ~/.config/i3/i3blocks.conf
-#     position top
-#     status_command <path>/bumblebee-status -m cpu memory battery time \
-# 		pasink pasource -p time.format="%H:%M" -t solarized
-#     # i3bar_command i3bar --transparency #00000000
-# # it could be that you have no primary display set: set one (xrandr --output <output> --primary)
-# # reference: https://i3wm.org/docs/userguide.html#_tray_output
-#     tray_output primary
-#     tray_padding 0
-    workspace_min_width 60
+# bar {
+#   font pango: JetBrains Mono Bold 12
+# 	position top
+# 	tray_output none
+#   	status_command bumblebee-status -m pasink pasource battery network datetime \
+# 		-p time.format="%H:%M" -t nord-powerline
+# # 		font pango: JetBrains Mono Bold 11
+# # 		# status_command i3blocks -c ~/.config/i3/i3blocks.conf
+# #     position top
+# #     status_command <path>/bumblebee-status -m cpu memory battery time \
+# # 		pasink pasource -p time.format="%H:%M" -t solarized
+# #     # i3bar_command i3bar --transparency #00000000
+# # # it could be that you have no primary display set: set one (xrandr --output <output> --primary)
+# # # reference: https://i3wm.org/docs/userguide.html#_tray_output
+# #     tray_output primary
+# #     tray_padding 0
+#     workspace_min_width 60
 
-# # When strip_workspace_numbers is set to yes,
-# # any workspace that has a name of the form
-# # “[n][:][NAME]” will display only the name.
-#     strip_workspace_numbers no
-# # strip_workspace_name no
+# # # When strip_workspace_numbers is set to yes,
+# # # any workspace that has a name of the form
+# # # “[n][:][NAME]” will display only the name.
+# #     strip_workspace_numbers no
+# # # strip_workspace_name no
 
-    colors {
-    background #2E3440FF
-    statusline #F8F8F2
-#     separator  #44475A
-#     # separator          $purple
-#     # background         $black
-#     # statusline         $white
-# #                     		border 		   bg		      txt		      indicator
-		focused_workspace	$mediumgrey	   	$grey		    $darkgrey	  $purple
-		active_workspace	$lightblue      $mediumgrey	$darkgrey	  $purple
-		inactive_workspace	$darkgrey   	$darkgrey	  $grey		    $purple
-		urgent_workspace	$urgentred	    $urgentred	$white		  $purple
-	}
-}
+#     colors {
+#     background #2E3440FF
+#     statusline #F8F8F2
+# #     separator  #44475A
+# #     # separator          $purple
+# #     # background         $black
+# #     # statusline         $white
+# # #                     		border 		   bg		      txt		      indicator
+# 		focused_workspace	$mediumgrey	   	$grey		    $darkgrey	  $purple
+# 		active_workspace	$lightblue      $mediumgrey	$darkgrey	  $purple
+# 		inactive_workspace	$darkgrey   	$darkgrey	  $grey		    $purple
+# 		urgent_workspace	$urgentred	    $urgentred	$white		  $purple
+# 	}
+# }
 
 # you can add different bars for multidisplay setups on each display:
 # set output HDMI-0 to the display you want the bar, --transparency can be set.
