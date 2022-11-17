@@ -354,8 +354,8 @@ set $ws10 "10"
 assign [class="Xfce4-terminal"] $ws1
 for_window [class="(?i)goland"]move to workspace $ws2
 for_window [class="(?i)code"]move to workspace $ws2
-for_window [class="(?i)brave"]move to workspace $ws3
-assign [class="Thunar"] $ws4
+# for_window [class="(?i)brave"]move to workspace $ws3
+# assign [class="Thunar"] $ws4
 for_window [class="Slack"]move to workspace $ws5
 for_window [class="Discord"]move to workspace $ws5
 for_window [class="Spotify"]move to workspace $ws6
