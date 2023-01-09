@@ -86,6 +86,8 @@ bindsym $mod+0    workspace  $ws10
 # Move workspaces between monitors
 bindsym $mod+$alt+h move workspace to output left
 bindsym $mod+$alt+l move workspace to output right
+bindsym $mod+$alt+k move workspace to output up
+bindsym $mod+$alt+j move workspace to output down
 
 # switch to workspace with numpad keys
 bindcode $mod+87 workspace 1
@@ -154,8 +156,8 @@ mode "resize" {
 # Pressing right will grow the window's width.
 # Pressing up will shrink the window's height.
 # Pressing down will grow the window's height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow width 10 px or 10 ppt
+        bindsym j resize shrink width 5 px or 5 ppt
+        bindsym k resize grow width 5 px or 5 ppt
 #        bindsym k resize grow height 10 px or 10 ppt
 #        bindsym l resize shrink height 10 px or 10 ppt
 #        bindsym ntilde resize grow width 10 px or 10 ppt
@@ -308,7 +310,7 @@ bindsym $mod+p exec /usr/local/bin/switch-audio-port
 bindsym $mod+i exec /usr/bin/brave
 bindsym $mod+o exec flatpak run com.spotify.Client
 bindsym $mod+n exec /usr/bin/thunar
-bindsym $mod+Shift+s exec flameshot gui -c
+bindsym $mod+Shift+s exec flameshot gui
 bindsym Print exec scrot ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
 
 # Power Profiles menu switcher (rofi)
@@ -362,7 +364,7 @@ for_window [class="Spotify"]move to workspace $ws6
 
 # automatic set focus new window if it opens on another workspace then the current:
 for_window [class=Xfce4-terminal] focus
-for_window [class=Brave] focus
+# for_window [class=Brave] focus
 for_window [class=(?i)spotify] focus
 for_window [class=(?i)discord] focus
 
@@ -389,8 +391,9 @@ for_window [class=(?i)discord] focus
 # For modifications, it can be copied to ~/.config/picom/picom.conf or ~/.config/picom.conf
 #
 # using default config 
-# exec_always --no-startup-id picom --experimental-backends -b
-
+exec_always --no-startup-id picom --experimental-backends --backend glx
+exec_always --no-startup-id ~/.config/xborder/xborders --border-radius 10 --border-mode outside --border-width 2
+ 
 # for custom config:
 # exec_always --no-startup-id picom --config  ~/.config/picom.conf --experimental-backends
 
@@ -497,7 +500,7 @@ for_window [window_role="About"] floating enable
 
 # set border of floating window
 for_window [class="urxvt"] border pixel 0
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 0
 
 # set size of floating window
 #for_window [window_role="(?i)GtkFileChooserDialog"] resize set 640 480 #to set size of file choose dialog
