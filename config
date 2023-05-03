@@ -180,7 +180,7 @@ bindsym $mod+r mode "resize"
 ######################################
 
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+q kill
@@ -354,6 +354,7 @@ set $ws10 "10"
 
 # bind program to workspace and focus to them on startup:
 assign [class="Xfce4-terminal"] $ws1
+assign [class="alacritty"] $ws1
 for_window [class="(?i)goland"]move to workspace $ws2
 for_window [class="(?i)code"]move to workspace $ws2
 # for_window [class="(?i)brave"]move to workspace $ws3
@@ -494,7 +495,7 @@ for_window [window_role="About"] floating enable
 
 # set border of floating window
 for_window [class="urxvt"] border pixel 0
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 1
 
 # set size of floating window
 #for_window [window_role="(?i)GtkFileChooserDialog"] resize set 640 480 #to set size of file choose dialog
