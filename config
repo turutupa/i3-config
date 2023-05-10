@@ -353,8 +353,8 @@ set $ws10 "10"
 #workspace $ws5 output HDMI-0
 
 # bind program to workspace and focus to them on startup:
-assign [class="Xfce4-terminal"] $ws1
-assign [class="alacritty"] $ws1
+# assign [class="Xfce4-terminal"] $ws1
+for_window [class="Alacritty"]move to workspace $ws1
 for_window [class="(?i)goland"]move to workspace $ws2
 for_window [class="(?i)code"]move to workspace $ws2
 # for_window [class="(?i)brave"]move to workspace $ws3
@@ -365,6 +365,7 @@ for_window [class="Spotify"]move to workspace $ws6
 
 # automatic set focus new window if it opens on another workspace then the current:
 for_window [class=Xfce4-terminal] focus
+for_window [class=Alacritty] focus
 # for_window [class=Brave] focus
 for_window [class=(?i)spotify] focus
 for_window [class=(?i)discord] focus
@@ -458,7 +459,7 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh dark
 
 # Autostart apps as you like
 exec_always --no-startup-id spotify
-exec --no-startup-id sleep 2 && xfce4-terminal
+exec --no-startup-id sleep 2 && alacritty 
 
 ###############
 # system tray #
