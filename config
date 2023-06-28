@@ -311,6 +311,7 @@ bindsym $mod+p exec /usr/local/bin/switch-audio-port
 ## App shortcuts
 bindsym $mod+i exec /usr/bin/brave
 bindsym $mod+o exec --no-startup-id i3-msg '[class="Spotify"] focus' || exec flatpak run com.spotify.Client
+bindsym $mod+u exec --no-startup-id i3-msg '[class="obsidian"] focus' || exec flatpak run md.obsidian.Obsidian
 bindsym $mod+n exec /usr/bin/thunar
 bindsym $mod+Shift+s exec flameshot gui
 bindsym Print exec scrot ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
@@ -357,6 +358,7 @@ set $ws10 "10"
 # bind program to workspace and focus to them on startup:
 # assign [class="Xfce4-terminal"] $ws1
 for_window [class="Alacritty"]move to workspace $ws1
+for_window [class="obsidian"]move to workspace $ws2
 for_window [class="(?i)goland"]move to workspace $ws2
 for_window [class="(?i)code"]move to workspace $ws2
 # for_window [class="(?i)brave"]move to workspace $ws3
