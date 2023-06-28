@@ -306,10 +306,11 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Redirect sound to headphones
-bindsym $mod+p exec /usr/local/bin/switch-audio-port
+bindsym $mod+y exec /usr/local/bin/switch-audio-port
 
 ## App shortcuts
-bindsym $mod+i exec /usr/bin/brave
+bindsym $mod+p exec --no-startup-id i3-msg '[class="Alacritty"] focus'
+bindsym $mod+i exec --no-startup-id i3-msg '[class="Brave"] focus' || exec /usr/bin/brave
 bindsym $mod+o exec --no-startup-id i3-msg '[class="Spotify"] focus' || exec flatpak run com.spotify.Client
 bindsym $mod+u exec --no-startup-id i3-msg '[class="obsidian"] focus' || exec flatpak run md.obsidian.Obsidian
 bindsym $mod+n exec /usr/bin/thunar
