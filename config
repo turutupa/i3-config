@@ -310,6 +310,7 @@ bindsym $mod+y exec /usr/local/bin/switch-audio-port
 
 ## App shortcuts
 bindsym $mod+p exec --no-startup-id i3-msg '[class="Alacritty"] focus'
+bindsym $mod+d exec --no-startup-id i3-msg '[class="discord"] focus' || exec /var/lib/snapd/snap/bin/discord
 bindsym $mod+i exec --no-startup-id i3-msg '[class="Brave"] focus' || exec /usr/bin/brave
 bindsym $mod+o exec --no-startup-id i3-msg '[class="Spotify"] focus' || exec flatpak run com.spotify.Client
 bindsym $mod+u exec --no-startup-id i3-msg '[class="obsidian"] focus' || exec flatpak run md.obsidian.Obsidian
@@ -362,7 +363,8 @@ for_window [class="Alacritty"]move to workspace $ws1
 for_window [class="obsidian"]move to workspace $ws2
 for_window [class="(?i)goland"]move to workspace $ws2
 for_window [class="(?i)code"]move to workspace $ws2
-# for_window [class="(?i)brave"]move to workspace $ws3
+for_window [class="(?i)brave"]move to workspace $ws3
+for_window [class="(?i)discord"]move to workspace $ws4
 # assign [class="Thunar"] $ws4
 for_window [class="Slack"]move to workspace $ws5
 for_window [class="Discord"]move to workspace $ws5
