@@ -22,7 +22,7 @@
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango: Noto Sans Regular 14
+font pango: JetBrainsMono Nerd Font 14
 
 # set the mod key to the winkey:
 set $mod Mod4
@@ -400,7 +400,7 @@ for_window [class=(?i)discord] focus
 # For modifications, it can be copied to ~/.config/picom/picom.conf or ~/.config/picom.conf
 #
 # using default config 
-# exec_always --no-startup-id picom --experimental-backends --backend glx
+exec_always --no-startup-id picom 
 # exec_always --no-startup-id ~/.config/xborder/xborders --border-radius 10 --border-mode outside --border-width 2
 
 #############################################
@@ -505,7 +505,7 @@ for_window [window_role="About"] floating enable
 
 # set border of floating window
 for_window [class="urxvt"] border pixel 0
-for_window [class=".*"] border pixel 4
+for_window [class=".*"] border pixel 2
 
 
 # set size of floating window
