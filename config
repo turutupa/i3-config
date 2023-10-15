@@ -74,11 +74,11 @@ bindsym $mod+Control+h workspace prev
 bindsym $mod+Tab workspace back_and_forth
 
 # switch to workspace
-bindsym $mod+1    workspace  $ws1
-bindsym $mod+2    workspace  $ws2
-bindsym $mod+3    workspace  $ws3
-bindsym $mod+4    workspace  $ws4
-bindsym $mod+5    workspace  $ws5
+bindsym $mod+a    workspace  $ws1
+bindsym $mod+s    workspace  $ws2
+bindsym $mod+d    workspace  $ws3
+bindsym $mod+f    workspace  $ws4
+bindsym $mod+g    workspace  $ws5
 bindsym $mod+6    workspace  $ws6
 bindsym $mod+7    workspace  $ws7
 bindsym $mod+8    workspace  $ws8
@@ -270,18 +270,18 @@ bindsym $mod+Shift+Right move right
 bindsym $mod+m fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+g layout tabbed
+# bindsym $mod+s layout stacking
+# bindsym $mod+g layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $alt+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 
 # open new empty workspace
 bindsym $mod+Shift+n exec ~/.config/i3/scripts/empty_workspace
@@ -310,7 +310,7 @@ bindsym $mod+y exec /usr/local/bin/switch-audio-port
 
 ## App shortcuts
 bindsym $mod+p exec --no-startup-id i3-msg '[class="Alacritty"] focus'
-bindsym $mod+d exec --no-startup-id i3-msg '[class="discord"] focus' || exec /var/lib/snapd/snap/bin/discord
+# bindsym $mod+d exec --no-startup-id i3-msg '[class="discord"] focus' || exec /var/lib/snapd/snap/bin/discord
 bindsym $mod+i exec --no-startup-id i3-msg '[class="Brave"] focus' || exec /usr/bin/brave
 bindsym $mod+o exec --no-startup-id i3-msg '[class="Spotify"] focus' || exec flatpak run com.spotify.Client
 bindsym $mod+u exec --no-startup-id i3-msg '[class="obsidian"] focus' || exec flatpak run md.obsidian.Obsidian
